@@ -1,4 +1,4 @@
-# STPLM: Single-Cell Language Training with Spatial Transcriptomics for Cell Identity Understanding.
+# stPLM: Single-Cell Language Training with Spatial Transcriptomics for Cell Identity Understanding.
 
 ---
 datasets: Xenium 
@@ -7,7 +7,7 @@ tags:
 - single-cell
 - genomics
 ---
-# STPLM
+# stPLM
 STPLM is a foundational transformer model pretrained on a large-scale corpus of single cell spatial transcriptomes to enable context-aware predictions in settings with limited data in network biology.
 
 - See [our manuscript]() for details of the original model trained on ~8 million transcriptomes in January 2025 and the initial report of our cell classification strategies.
