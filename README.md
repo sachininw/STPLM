@@ -8,14 +8,14 @@ tags:
 - genomics
 ---
 # stPLM
-STPLM is a foundational transformer model pretrained on a large-scale corpus of single cell spatial transcriptomes to enable context-aware predictions in settings with limited data in network biology.
+stPLM is a foundational transformer model pretrained on a large-scale corpus of single cell spatial transcriptomes to enable context-aware predictions in settings with limited data in network biology.
 
 - See [our manuscript]() for details of the original model trained on ~8 million transcriptomes in January 2025 and the initial report of our cell classification strategies.
 
-- See [STPLM.readthedocs.io](https://stplm.readthedocs.io) for documentation.
+- See [stPLM.readthedocs.io](https://stPLM.readthedocs.io) for documentation.
 
 # Model Description
-STPLM is a foundational transformer model pretrained on a large-scale corpus of single cell spatial transcriptomes representing human lung and colon tumor tissues. STPLM was originally pretrained in January 2025 on a gene corpus comprised of ~8 million single cell spatial transcriptomes. STPLM specializes in characterizing cells with high mutational burdens (e.g. tumor cells) subjected to high network rewiring. 
+stPLM is a foundational transformer model pretrained on a large-scale corpus of single cell spatial transcriptomes representing human lung and colon tumor tissues. stPLM was originally pretrained in January 2025 on a gene corpus comprised of ~8 million single cell spatial transcriptomes. stPLM specializes in characterizing cells with high mutational burdens (e.g. tumor cells) subjected to high network rewiring. 
 
 Each single cell and cell neighborhood transcriptome is presented to the model as a rank value encoding where genes are ranked by their expression in that cell scaled by their expression across the entire gene corpus (8M). The rank value encoding provides a nonparametric representation of that cell’s transcriptome and takes advantage of the many observations of each gene’s expression across the pretraining corpus to prioritize genes that distinguish cell state. Specifically, this method will deprioritize ubiquitously highly-expressed housekeeping genes by scaling them to a lower rank. Conversely, genes such as transcription factors that may be lowly expressed when they are expressed but highly distinguish cell state will move to a higher rank within the encoding. Furthermore, this rank-based approach may be more robust against technical artifacts that may systematically bias the absolute transcript counts value while the overall relative ranking of genes within each cell remains more stable.
 
@@ -23,7 +23,7 @@ The rank value encoding of each single cell’s transcriptome then proceeds thro
 
 We detail applications and results in [our manuscript]().
 
-During pretraining, STPLM gained a fundamental understanding of network dynamics, encoding network hierarchy in the model’s attention weights in a completely self-supervised manner. With both few-shot learning and fine-tuning with limited task-specific data, STPLM consistently boosted predictive accuracy in a diverse panel of downstream tasks relevant to cellular behavior inference Overall, STPLM represents a foundational deep learning model pretrained on a large-scale corpus human single cell spatial transcriptomes to gain a fundamental understanding of gene network dynamics that can now be democratized to a vast array of downstream tasks to accelerate discovery of key network regulators and candidate therapeutic targets.
+During pretraining, stPLM gained a fundamental understanding of network dynamics, encoding network hierarchy in the model’s attention weights in a completely self-supervised manner. With both few-shot learning and fine-tuning with limited task-specific data, stPLM consistently boosted predictive accuracy in a diverse panel of downstream tasks relevant to cellular behavior inference Overall, stPLM represents a foundational deep learning model pretrained on a large-scale corpus human single cell spatial transcriptomes to gain a fundamental understanding of gene network dynamics that can now be democratized to a vast array of downstream tasks to accelerate discovery of key network regulators and candidate therapeutic targets.
 
 # Application
 The pretrained Geneformer model can be used directly for zero-shot learning, by fine-tuning towards the relevant downstream cell identity learning tasks.
@@ -43,10 +43,10 @@ In addition to the pretrained model, contained herein are functions for tokenizi
 ```bash
 
 git lfs install
-git clone https://github.com/sachininw/STPLM.git
-cd STPLM
+git clone https://github.com/sachininw/stPLM.git
+cd stPLM
 pip install .
 ```
 
 
-Please note that GPU resources are required for efficient usage of STPLM. Additionally, we strongly recommend tuning hyperparameters for each downstream fine-tuning application as this can significantly boost predictive potential in the downstream task (e.g. max learning rate, learning schedule, number of layers to freeze, etc.).
+Please note that GPU resources are required for efficient usage of stPLM. Additionally, we strongly recommend tuning hyperparameters for each downstream fine-tuning application as this can significantly boost predictive potential in the downstream task (e.g. max learning rate, learning schedule, number of layers to freeze, etc.).
